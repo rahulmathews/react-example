@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 // import Radium, {StyleRoot} from 'radium';
 
 import styles from './App.module.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 	state = {
@@ -47,38 +47,24 @@ class App extends Component {
 
 	render(){
 		let persons = null;
-		let btnClass = '';
 		
 		if(this.state.showPersons){
 			persons = (
 				<div>
-					{this.state.persons.map((person, index) => {
-						return <ErrorBoundary key={person.id}>
-									<Person 
-									name={person.name} 
-									age={person.age} 
-									click={() => this.deletePersonHandler(index)}
-									change = {(event) => this.switchNameHandler(event, person.id)} />
-								</ErrorBoundary>
-					})}
+					<Persons 
+					persons={this.state.persons}
+					click={this.deletePersonHandler}
+					change={this.switchNameHandler} />
 				</div>
 			);
-			btnClass = styles.Red;
-		}
-
-		let classes = [];
-		if(this.state.persons.length <= 2){
-			classes.push(styles.red);
-		}
-		if(this.state.persons.length <= 1){
-			classes.push(styles.bold);
 		}
 
 		return (
 			<div className={styles.App}>
-				<h1>Hi, I am a React Developer</h1>
-				<p className={classes.join(' ')}>This is really working</p>
-				<button className={btnClass} onClick={this.togglePersonsHandler}>Toggle persons</button>
+				<Cockpit 
+				showPersons={this.state.showPersons}
+				persons={this.state.persons}
+				click={this.togglePersonsHandler}/>
 				{persons}
 			</div>
 		);
