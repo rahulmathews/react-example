@@ -27,6 +27,20 @@ class App extends Component {
 		console.log('Inside [App.js] componentDidMount()');
 	}
 
+	componentWillReceiveProps(nextProps){
+        console.log('Inside [App.js] componentWillReceiveProps()', nextProps);
+    }
+    
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('Inside [App.js] shouldComponentUpdate()', nextProps, nextState);
+		return this.state.persons !== nextState.persons ||
+		this.state.showPersons !== nextState.showPersons;
+    }
+
+    componentDidUpdate(){
+        console.log('Inside [App.js] componentDidUpdate()');
+    }
+
 	// state = {
 	// 	persons : [
 	// 		{id:"hhdbbdbb", name : 'Rahul', age : 22},
@@ -83,6 +97,7 @@ class App extends Component {
 
 		return (
 			<div className={styles.App}>
+				<button onClick={() =>{this.setState({showPersons : true})}}>Show Persons</button>
 				<Cockpit 
 				title={this.props.title}
 				showPersons={this.state.showPersons}
