@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 // import Radium, {StyleRoot} from 'radium';
 
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -31,11 +31,11 @@ class App extends Component {
         console.log('Inside [App.js] componentWillReceiveProps()', nextProps);
     }
     
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('Inside [App.js] shouldComponentUpdate()', nextProps, nextState);
-		return this.state.persons !== nextState.persons ||
-		this.state.showPersons !== nextState.showPersons;
-    }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('Inside [App.js] shouldComponentUpdate()', nextProps, nextState);
+	// 	return this.state.persons !== nextState.persons ||
+	// 	this.state.showPersons !== nextState.showPersons;
+    // }
 
     componentDidUpdate(){
         console.log('Inside [App.js] componentDidUpdate()');
