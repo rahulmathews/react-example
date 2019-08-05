@@ -6,14 +6,35 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-	state = {
-		persons : [
-			{id:"hhdbbdbb", name : 'Rahul', age : 22},
-			{id:"hlubeaesb", name : 'Neha', age : 24},
-			{id:"jsdvjddsdb", name : 'Swathi', age : 21},
-		],
-		showPersons : false
+	constructor(props){
+		super(props);
+		this.state = {
+			persons : [
+				{id:"hhdbbdbb", name : 'Rahul', age : 22},
+				{id:"hlubeaesb", name : 'Neha', age : 24},
+				{id:"jsdvjddsdb", name : 'Swathi', age : 21},
+			],
+			showPersons : false
+		};
+		console.log('Inside [App.js] constructor', props);
 	}
+
+	componentWillMount(){
+		console.log('Inside [App.js] componentWillMount()');
+	}
+
+	componentDidMount(){
+		console.log('Inside [App.js] componentDidMount()');
+	}
+
+	// state = {
+	// 	persons : [
+	// 		{id:"hhdbbdbb", name : 'Rahul', age : 22},
+	// 		{id:"hlubeaesb", name : 'Neha', age : 24},
+	// 		{id:"jsdvjddsdb", name : 'Swathi', age : 21},
+	// 	],
+	// 	showPersons : false
+	// }
 
 	switchNameHandler = (event, id) => {
 		const name = event.target.value;
@@ -46,6 +67,7 @@ class App extends Component {
 	}
 
 	render(){
+		console.log('Inside [App.js] render()');
 		let persons = null;
 		
 		if(this.state.showPersons){
