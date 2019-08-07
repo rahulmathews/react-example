@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 // import Radium from 'radium';
 
 import './Person.css';
-import WithClass from '../../../hoc/WithClass';
+import withClass from '../../../hoc/withClass';
+// import WithClass from '../../../hoc/WithClass';
+import Aux from '../../../hoc/Aux'; 
 
 
 class Person extends Component{
@@ -22,11 +24,11 @@ class Person extends Component{
     render(){
         console.log('Inside [Person.js] render()');
         return (
-            <WithClass classes="Person">
+            <Aux>
                 <p onClick={this.props.click}>I'm a {this.props.name} and I am {this.props.age} years old</p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.change} value={this.props.name}></input>
-            </WithClass>
+            </Aux>
         )
         // return [
         //     <p key="1" onClick={this.props.click}>I'm a {this.props.name} and I am {this.props.age} years old</p>,
@@ -36,4 +38,4 @@ class Person extends Component{
     }
 }
 
-export default Person;
+export default withClass(Person, 'Person');
