@@ -19,7 +19,10 @@ class Person extends Component{
 	}
 
 	componentDidMount(){
-		console.log('Inside [Person.js] componentDidMount()');
+        console.log('Inside [Person.js] componentDidMount()');
+        if(this.props.position === 0){
+            this.inputElem.focus();
+        }
     }
     
     render(){
@@ -28,7 +31,7 @@ class Person extends Component{
             <Aux>
                 <p onClick={this.props.click}>I'm a {this.props.name} and I am {this.props.age} years old</p>
                 <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.change} value={this.props.name}></input>
+                <input ref={(inp) => {this.inputElem = inp}} type="text" onChange={this.props.change} value={this.props.name} />
             </Aux>
         )
         // return [
