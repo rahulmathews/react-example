@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 // import Radium from 'radium';
+import PropTypes from 'prop-types';
 
 import './Person.css';
 import withClass from '../../../hoc/withClass';
@@ -36,6 +37,13 @@ class Person extends Component{
         //     <input key="3" type="text" onChange={this.props.change} value={this.props.name}></input>
         // ]
     }
+}
+
+Person.propTypes = {
+    change  : PropTypes.func,
+    click   : PropTypes.func,
+    name    : PropTypes.string,
+    age     : PropTypes.number
 }
 
 export default withClass(Person, 'Person');
